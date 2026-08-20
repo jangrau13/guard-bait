@@ -1,0 +1,21 @@
+version: 1
+assignment: guard-bait
+
+goals:
+  - id: who-decides
+    level: analyse
+    goal: >
+      Trace how your code picks a coordinator, and work out why two peers
+      running it independently reach the same answer — or do not.
+
+  - id: split-brain
+    level: evaluate
+    goal: >
+      Judge what your scheme does when the network splits the peers into two
+      halves that can each see themselves and not the other, and defend it.
+
+  - id: design-alternative
+    level: create
+    goal: >
+      Design a different way of choosing the coordinator than the one you
+      built, and say what it buys and what it costs.
