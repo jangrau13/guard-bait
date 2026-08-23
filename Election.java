@@ -1,19 +1,25 @@
-/** Choosing one coordinator among peers that can all see each other. */
+import java.util.Set;
+import java.util.HashSet;
+
 public class Election {
     private final String self;
-    private final java.util.Set<String> peers;
+    private final Set<String> alive;
 
-    public Election(String self, java.util.Set<String> peers) {
+    public Election(String self, Set<String> peers) {
         this.self = self;
-        this.peers = peers;
+        this.alive = new HashSet<>(peers);
+        this.alive.add(self);
     }
 
-    /** The id of the peer that should coordinate right now. */
+    // Whoever is alphabetically first among the peers still answering.
     public String coordinator() {
-        throw new UnsupportedOperationException("not implemented");
+        String best = null;
+        for (String p : alive) {
+            if (best == null || p.compareTo(best) < 0) best = p;
+        }
+        return best;
     }
 
-    /** Called when a peer stops answering. */
     public void lost(String peer) {
         throw new UnsupportedOperationException("not implemented");
     }
