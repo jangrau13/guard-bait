@@ -21,6 +21,6 @@ public class Election {
     }
 
     public void lost(String peer) {
-        throw new UnsupportedOperationException("not implemented");
+        alive.remove(peer);
     }
 }
